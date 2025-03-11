@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- css -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <title>Update Your Trip</title>
+
+</head>
+
+
+<body>
+  <h1>Update your <%= trip.destination %> Trip!</h1>
+
+  <nav>
+    <ul>
+      
+        <a href="/trips/">
+          <div class="index-link-text">Back to Trips</div>
+        </a>
+    </ul>
+  </nav>
+
+
+  <form action="/trips/<%= trip._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+    <div>
+      <label for="destination">Destination :</label>
+      <input type="text" name="destination" id="destination" value="<%= trip.destination %>" />
+    </div>
+
+    <div>
+      <label for="date">Date : </label>
+      <input type="date" name="date" id="date" value="<%= tripDate %>" />
+    </div>
+
+    <div>
+      <label for="budget">Budget</label>
+      <input type="number" name="budget" id="budget" value="<%= trip.budget %>" />
+    </div>
+
+    <div>
+      <label for="duration">Duration (In days):</label>
+      <input type="number" id="duration" name="duration" value="<%= trip.duration %>" />
+    </div>
+
+    <div class="check-ticket">
+      <label for="isBookedTicket">Have you booked the ticket?</label>
+      <input type="checkbox" id="isBookedTicket" name="isBookedTicket" <% if (trip.isBookedTicket) { %> checked <% } %>
+        />
+    </div>
+
+    <!-- Display the existing image if available -->
+    <% if (trip.image) { %>
+      <div>
+        <p>Current Image:</p>
+        <img src="data:<%= trip.imageType %>;base64,<%= trip.image.toString('base64') %>" alt="Trip Image"
+          style="max-width: 100%; height: auto;" />
+      </div>
+      <% } %>
+
+        <div>
+          <label for="image">Upload Image:</label>
+          <input type="file" id="image" name="image" accept="image/*" value="<%= trip.image %>" />
+        </div>
+        <button type="submit">Update Trip</button>
+  </form>
+</body>
+
+</html>

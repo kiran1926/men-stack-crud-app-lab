@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- css -->
+     <link rel="stylesheet" href="/css/style.css"/>
+    <title>Trip Details Page</title>
+</head>
+<body>
+    <h1><%= trip.destination %></h1>
+    <nav>
+        <ul>
+                <a href="/trips/">
+                    <div class="index-link-text">Back to Trips</div>
+                </a>
+        </ul>
+    </nav>
+    <div class="trip-details">
+        <!-- show page content -->
+      
+    <% if (trip.isBookedTicket) {%>
+        <p>Tickets for this trip are booked</p>
+        <% } else { %>
+            <p>Tickets for this trip are not yet booked</p>
+            <% } %>
+    </div>
+    <div class="trip-actions">
+    <!-- delete -->
+     <form class="delete-form" action="/trips/<%= trip._id %>?_method=DELETE" method="POST">
+        <button class="delete-button" type="submit">Delete <%= trip.destination %> Trip</button>
+     </form>
+     <!-- edit -->
+      <a class="edit-link" href="/trips/<%= trip._id %>/edit"> 
+        <div class="edit-text">Edit <%= trip.destination %> Trip </div>
+    </a>
+
+    </div>
+
+
+</body>
+</html>
