@@ -8,22 +8,11 @@
     <title>Travel Plannner</title>
 </head>
 <body>
-    <h1>Welcome to your Travel Planner!</h1>
-    <img class="travel-pic1" src="/imgs/travelPlanner.webp" alt="travelling luggage illustration">
-   
-    <p>An app for organizing all of your trips</p>
-    <nav>
-        <ul>
-            <li>
-                <a class="trip-index-link" href="/trips">Browse Trips</a>
+    <%- include("partials/navbar") %>
+    <h1 class="background-text">Welcome to your Travel Planner!</h1>
+    <h2 class="background-text1">An app for organizing all of your trips</h2>
+    <img class="travel-pic1" src="/imgs/travelPlanner.webp" alt="travelling luggage illustration" style="border-radius: 10px;">
 
-            </li>
-
-            <li>
-                <a href="/trips/new">Add a New Trip</a>
-            </li>
-        </ul>
-    </nav>
 </body>
 <footer>Icons by <a href="https://www.flaticon.com/authors/freepik">Freekpik</a></footer>
 </html>

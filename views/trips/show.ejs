@@ -8,22 +8,21 @@
     <title>Trip Details Page</title>
 </head>
 <body>
-    <h1><%= trip.destination %></h1>
-    <nav>
-        <ul>
-                <a href="/trips/">
-                    <div class="index-link-text">Back to Trips</div>
-                </a>
-        </ul>
-    </nav>
+    <%- include("../partials/navbar") %>
+    <h1><%= trip.destination %> Trip </h1>
     <div class="trip-details">
         <!-- show page content -->
-      
-    <% if (trip.isBookedTicket) {%>
-        <p>Tickets for this trip are booked</p>
+        <img src="/trips/<%= trip._id %>/image" alt="Image of <%= trip.destination %>" class="trip-image" style="border-radius: 10px;">
+
+        <p><strong>Date:</strong> <%= trip.date.toDateString() %></p>
+        <p><strong>Budget:</strong> $<%= trip.budget %></p>
+        <p><strong>Duration:</strong> <%= trip.duration %> days</p>
+
+        <% if (trip.isBookedTicket) { %>
+            <p style="color: rgb(33, 164, 184);"><strong>Tickets are booked</strong></p>
         <% } else { %>
-            <p>Tickets for this trip are not yet booked</p>
-            <% } %>
+            <p style="color: red;"><strong>Tickets are not booked</strong></p>
+        <% } %>
     </div>
     <div class="trip-actions">
     <!-- delete -->

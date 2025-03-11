@@ -109,7 +109,19 @@ app.delete("/trips/:tripId", async(req, res) => {
     res.redirect("/trips");
 });
 
+//to get the image
+app.get("/trips/:tripId/image", async (req, res) => {
+    const trip = await Trip.findById(req.params.tripId);
+    
+    if (trip && trip.image) {
+      res.set("Content-Type", trip.imageType);
+      return res.send(trip.image);
+    }
+    
+    res.status(404).send("Image not found");
+  });
 
+  
 app.listen("3000", () => {
   console.log("listening on port 3000");
 });

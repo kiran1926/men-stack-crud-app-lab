@@ -12,17 +12,8 @@
 
 
 <body>
+  <%- include("../partials/navbar") %>
   <h1>Update your <%= trip.destination %> Trip!</h1>
-
-  <nav>
-    <ul>
-      
-        <a href="/trips/">
-          <div class="index-link-text">Back to Trips</div>
-        </a>
-    </ul>
-  </nav>
-
 
   <form action="/trips/<%= trip._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
     <div>

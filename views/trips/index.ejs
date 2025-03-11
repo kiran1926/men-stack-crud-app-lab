@@ -1,34 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <!-- css -->
-     <link rel="stylesheet" href="/css/style.css"/>
+    <!-- css -->
+    <link rel="stylesheet" href="/css/style.css" />
     <title>Shows all trips</title>
 </head>
-<body>
-    <div class="index-header-div">
-    <h1>All of your trips</h1>
 
-    <nav>
-        <ul>
-            <li>
-                <a class="add-trip" href="/trips/new">Add new Trip</a>
-            </li>
-        </ul>
-    </nav>
-</div>
+<body>
+    <%- include("../partials/navbar") %>
+    <div class="index-header-div">
+        <h1>All of your trips</h1>
+    </div>
 
     <ul class="ul-trips">
-        <% trips.forEach(trip => { %>
-            <li class="li-trips">
+        <% trips.forEach(trip=> { %>
+            <div class="li-trips">
                 <a class="trip-cards" href="/trips/<%= trip._id %>">
-                    <img src="<%= trip.image %>" alt="<%= trip.destination %> image" class="trip-image"/>
-                    <h3><%= trip.destination %></h3>
+                    <img src="/trips/<%= trip._id %>/image" alt="<%= trip.destination %> image" class="trip-image" />
+                    <h3>
+                        <%= trip.destination %>
+                    </h3>
                 </a>
-            </li>
-        <% }); %>
+            </div>
+            <% }); %>
     </ul>
 </body>
+
 </html>
